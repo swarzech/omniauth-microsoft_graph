@@ -3,8 +3,10 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class MicrosoftGraph < OmniAuth::Strategies::OAuth2
-      puts "******************"
-      puts request.env['omniauth.strategy']
+      def initialize
+        super
+        puts options
+      end
       option :name, :microsoft_graph
 
       option :client_options, {
