@@ -4,7 +4,7 @@ module OmniAuth
   module Strategies
     class MicrosoftGraph < OmniAuth::Strategies::OAuth2
       puts "******************"
-      puts options
+      puts @options
       option :name, :microsoft_graph
 
       option :client_options, {
