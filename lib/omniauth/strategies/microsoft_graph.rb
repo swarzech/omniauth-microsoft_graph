@@ -3,12 +3,16 @@ require 'omniauth-oauth2'
 module OmniAuth
   module Strategies
     class MicrosoftGraph < OmniAuth::Strategies::OAuth2
-      def initialize
-        super
-        puts options
-      end
+      BASE_MICROSOFT_GRAPH_URL = 'https://login.microsoftonline.com'
+      
       option :name, :microsoft_graph
 
+      def client
+        puts "*******************"
+        puts options
+        super
+      end
+      
       option :client_options, {
         site:          'https://login.microsoftonline.com/common/oauth2/authorize',
         token_url:     'https://login.microsoftonline.com/common/oauth2/token',
