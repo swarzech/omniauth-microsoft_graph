@@ -8,7 +8,7 @@ Can be used to authenticate with Office365 or other MS services, and get a token
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'omniauth-microsoft_graph'
+gem 'omniauth-outlook'
 ```
 
 And then execute:
@@ -17,20 +17,20 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install omniauth-microsoft_graph
+    $ gem install omniauth-outlook
 
 ## Usage
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :microsoft_graph, ENV['AZURE_APPLICATION_CLIENT_ID'], ENV['AZURE_APPLICATION_CLIENT_SECRET']
+  provider :outlook, ENV['AZURE_APPLICATION_CLIENT_ID'], ENV['AZURE_APPLICATION_CLIENT_SECRET']
 end
 ```
 
 
 ## Contributing
 
-1. Fork it ( https://github.com/synth/omniauth-microsoft_graph/fork )
+1. Fork it ( https://github.com/synth/omniauth-outlook/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

@@ -2,10 +2,10 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class MicrosoftGraph < OmniAuth::Strategies::OAuth2
+    class Outlook < OmniAuth::Strategies::OAuth2
       BASE_MICROSOFT_GRAPH_URL = 'https://login.microsoftonline.com'
-      
-      option :name, :microsoft_graph
+
+      option :name, :outlook
 
       def client
         if options.tenant_id
@@ -16,7 +16,7 @@ module OmniAuth
         options.client_options.authorize_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
         options.client_options.token_url = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/token"
         options.client_options.site = "#{BASE_MICROSOFT_GRAPH_URL}/#{tenant_id}/oauth2/authorize"
-        
+
         super
       end
 
@@ -25,7 +25,7 @@ module OmniAuth
       }
 
       option :token_params, {
-        resource: 'https://graph.microsoft.com/'        
+        resource: 'https://graph.microsoft.com/'
       }
 
       uid { raw_info["id"] }

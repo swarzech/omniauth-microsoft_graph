@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'minitest/autorun'
 require 'mocha/setup'
-require 'omniauth/strategies/microsoft_graph'
+require 'omniauth/strategies/outlook'
 
 OmniAuth.config.test_mode = true
 
@@ -27,4 +27,3 @@ class StrategyTestCase < Minitest::Test
     end
   end
 end
-

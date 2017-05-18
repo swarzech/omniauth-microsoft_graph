@@ -1,5 +1,5 @@
 module Omniauth
-  module Office365
+  module Outlook
     VERSION = "0.1.0"
   end
 end

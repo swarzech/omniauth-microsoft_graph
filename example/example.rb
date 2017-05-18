@@ -1,6 +1,6 @@
 $:.push File.dirname(__FILE__) + '/../lib'
 
-require 'omniauth-microsoft_graph'
+require 'omniauth-outlook'
 require 'sinatra'
 require 'json'
 
@@ -11,14 +11,14 @@ secret = ENV['AZURE_APPLICATION_CLIENT_SECRET']
 
 use Rack::Session::Cookie
 use OmniAuth::Builder do
-  provider :microsoft_graph, client_id, secret
+  provider :outlook, client_id, secret
 end
 
 get '/' do
-  "<a href='/auth/microsoft_graph'>Log in with Microsoft</a>"
+  "<a href='/auth/outlook'>Log in with Microsoft</a>"
 end
 
-get '/auth/microsoft_graph/callback' do
+get '/auth/outlook/callback' do
   content_type 'text/plain'
   request.env['omniauth.auth'].to_json
 end
