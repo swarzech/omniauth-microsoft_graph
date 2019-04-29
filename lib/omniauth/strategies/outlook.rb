@@ -8,6 +8,9 @@ module OmniAuth
       option :name, :outlook
 
       def client
+        Rails.logger.error "client"
+        Rails.logger.error options
+        
         if options.tenant_id
           tenant_id = options.tenant_id
         else
