@@ -54,9 +54,9 @@ module OmniAuth
       end
 
       def authorize_params
-        Ralis.logger.error "authorize_params"
-        Ralis.logger.error request.params
-        Ralis.logger.error options[:authorize_options]
+        Rails.logger.error "authorize_params"
+        Rails.logger.error request.params
+        Rails.logger.error options[:authorize_options]
 
         super.tap do |params|
           options[:authorize_options].each do |k|
