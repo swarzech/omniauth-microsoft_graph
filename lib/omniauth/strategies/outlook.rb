@@ -54,14 +54,13 @@ module OmniAuth
       end
 
       def authorize_params
-        super.tap do |params|
-          %w[display score auth_type scope prompt login_hint domain_hint response_mode].each do |v|
-            if request.params[v]
-              params[v.to_sym] = request.params[v]
-            end
-          end
-        end
-      end
+       super.tap do |params|
+         options[:authorize_options].each do |k|
+           params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
+         end
+       end
+     end
+
     end
   end
 end
