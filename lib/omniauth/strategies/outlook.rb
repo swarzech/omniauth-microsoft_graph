@@ -57,6 +57,7 @@ module OmniAuth
         Rails.logger.error "authorize_params"
         Rails.logger.error request.params
         Rails.logger.error options[:authorize_options]
+        Rails.logger.error options
 
         super.tap do |params|
           options[:authorize_options].each do |k|
