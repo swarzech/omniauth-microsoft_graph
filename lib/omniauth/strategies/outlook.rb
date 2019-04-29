@@ -62,6 +62,7 @@ module OmniAuth
         super.tap do |params|
           options[:authorize_options].each do |k|
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
+            params[k] = options[k.to_s] unless [nil, ''].include?(options[k.to_s])
           end
         end
       end
