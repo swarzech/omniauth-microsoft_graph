@@ -8,9 +8,6 @@ module OmniAuth
       option :name, :outlook
 
       def client
-        Rails.logger.error "client"
-        Rails.logger.error options
-        
         if options.tenant_id
           tenant_id = options.tenant_id
         else
@@ -57,11 +54,6 @@ module OmniAuth
       end
 
       def authorize_params
-        Rails.logger.error "authorize_params"
-        Rails.logger.error request.params
-        Rails.logger.error options[:authorize_options]
-        Rails.logger.error options
-
         super.tap do |params|
           options[:authorize_options].each do |k|
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
