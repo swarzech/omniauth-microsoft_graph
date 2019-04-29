@@ -28,6 +28,8 @@ module OmniAuth
         resource: 'https://graph.microsoft.com/'
       }
 
+      option :authorize_options, %i[display score auth_type scope prompt login_hint domain_hint response_mode]
+
       uid { raw_info["id"] }
 
       info do
@@ -49,6 +51,16 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get(authorize_params.resource + 'v1.0/me').parsed
+      end
+
+      def authorize_params
+        super.tap do |params|
+          %w[display score auth_type].each do |v|
+            if request.params[v]
+              params[v.to_sym] = request.params[v]
+            end
+          end
+        end
       end
     end
   end
