@@ -28,7 +28,7 @@ module OmniAuth
         resource: 'https://graph.microsoft.com/'
       }
 
-      option :authorize_options, %i[display score auth_type scope prompt login_hint domain_hint response_mode]
+      option :authorize_options, %i[state callback_url display score auth_type scope prompt login_hint domain_hint response_mode]
 
       uid { raw_info["id"] }
 
@@ -59,7 +59,13 @@ module OmniAuth
             params[k] = request.params[k.to_s] unless [nil, ''].include?(request.params[k.to_s])
             params[k] = options[k.to_s] unless [nil, ''].include?(options[k.to_s])
           end
+
+          session['omniauth.state'] = params[:state] if params[:state]
         end
+      end
+
+      def callback_url
+        options[:callback_url] || full_host + script_name + callback_path
       end
 
     end
